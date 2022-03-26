@@ -17,7 +17,7 @@ class BreakPoint(gdb.Breakpoint):
 
 
 class FinishBreakpoint(gdb.FinishBreakpoint):
-    def __init__(self, cb) -> None:
+    def __init__(self, cb):
         super().__init__()
         self._callback = cb
     def stop(self):
