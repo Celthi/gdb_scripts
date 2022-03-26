@@ -13,5 +13,5 @@ def not_handle_SIGSEGV():
     gdb.execute("handle SIGSEGV nostop noprint pass")
 
 def enable_logging(logging_file):
-    gdb.execute('set logging file' + logging_file)
+    gdb.execute('set logging file ' + logging_file)
     gdb.execute('set logging on')
