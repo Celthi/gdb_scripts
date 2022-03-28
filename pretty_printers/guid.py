@@ -42,7 +42,8 @@ class GUIDPrinter:
 
 def build_pretty_printer():
     pp = gdb.printing.RegexpCollectionPrettyPrinter("MBase")
-    pp.add_printer('DSS ID printer', '^(DSS_ID|GUID)$', GUIDPrinter)
+    print('register DSS ID printer.')
+    pp.add_printer('DSS ID printer', '^(DSS_ID|_GUID)', GUIDPrinter)
     return pp
 
 
