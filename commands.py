@@ -1,4 +1,5 @@
 try:
+    import argparse
     import gdb
 except ImportError as e:
     raise ImportError("This script must be run in GDB: ", str(e))
@@ -17,9 +18,6 @@ class SampleCommand(gdb.Command):
         print('command is called.')
 
 
-import argparse
-
-
 class DTCommand(gdb.Command):
     def __init__(self):
         # This registers our class as "simple_command"
@@ -31,17 +29,14 @@ class DTCommand(gdb.Command):
         args = arg.split()
         parser = argparse.ArgumentParser(
             description='print the type and offset of fields')
-        parser.add_argument('-t', dest='ty', action='store',
-                            default='',
+        parser.add_argument('tp', 
                             help='provide the type name')
 
         args = parser.parse_args(args)
-        ty = args.ty
-        typ = gdb.lookup_type(ty)
-        for field in typ.fields():
+        tp = args.tp
+        tp = gdb.lookup_type(tp)
+        for field in tp.fields():
             print('+{} {}'.format(field.bitpos/8, field.name))
-        
 
 
-        
 DTCommand()
