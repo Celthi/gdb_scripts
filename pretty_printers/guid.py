@@ -25,7 +25,7 @@ class GUIDPrinter:
         self.val = val
 
     def to_string(self):
-        guidstr = 'ID: {:08X}{:04X}{:04X}{:02X}{:02X}{:02X}{:02X}{:02X}{:02X}{:02X}{:02X}'.format(
+        guidstr = '{:08X}{:04X}{:04X}{:02X}{:02X}{:02X}{:02X}{:02X}{:02X}{:02X}{:02X}'.format(
             int(self.val['Data1']),
             int(self.val['Data3']),
             int(self.val['Data2']),
