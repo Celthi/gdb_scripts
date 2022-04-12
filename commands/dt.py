@@ -22,7 +22,10 @@ class DTCommand(gdb.Command):
         tp = args.tp
         tp = gdb.lookup_type(tp)
         for field in tp.fields():
-            print('+{} {}'.format(field.bitpos/8, field.name))
+            res = '+{} {}: {} size={}'.format(field.bitpos/8, field.name, field.type, field.type.sizeof)
+            if field.is_base_class:
+                res += ' (base)'
+            print(res)
 
 
 DTCommand()
