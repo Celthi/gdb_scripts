@@ -1,7 +1,7 @@
 import sys
 import os
 def add_paths():
-    pythondir = '/usr/share/gcc-8.3.0/python'
+    pythondir = '/usr/share/gcc/python'
     print('add to the python sys.path: '+ pythondir)
     sys.path.append(pythondir)
     scripts_folder = os.path.dirname(__file__)

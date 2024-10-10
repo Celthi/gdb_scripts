@@ -2,12 +2,11 @@
 # 1 create a printer with to_string method
 # 2 create a printer matcher
 # 3 register the printer to the gdb.
-import re
 import gdb.printing
-import sys
+import re
+PAT = re.compile('^(DSS_ID|_GUID)')
 
-
-class GUIDPrinter:
+class Printer:
     '''
     Currently, only tests in Linux
         typedef struct _GUID
@@ -43,7 +42,7 @@ class GUIDPrinter:
 def build_pretty_printer():
     pp = gdb.printing.RegexpCollectionPrettyPrinter("Base")
     print('register DSS ID printer.')
-    pp.add_printer('DSS ID printer', '^(DSS_ID|_GUID)', GUIDPrinter)
+    pp.add_printer('DSS ID printer', PAT, Printer)
     return pp
 
 

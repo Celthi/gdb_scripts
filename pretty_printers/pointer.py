@@ -3,12 +3,19 @@
 # # 2 create a printer matcher
 # # 3 register the printer to the gdb.
 
-import re
 import gdb.printing
 import gdb
 import traceback
 import common
+from pretty_printers import guid
+
 gPrinters = {}
+def register_pointer_printer(pat, printer_class):
+    global gPrinters
+    print(f'register {printer_class} disptacher for pointee {pat}')
+    gPrinters[pat] = printer_class
+
+register_pointer_printer(guid.PAT, guid.Printer)
 
 def lookup_pretty_printer(val):
     try:
@@ -25,7 +32,7 @@ def lookup_pretty_printer(val):
     return None
 
 
-print('register disptacher for pointer.')
+
 gdb.printing.register_pretty_printer(
     gdb.current_objfile(),
     lookup_pretty_printer, replace=True

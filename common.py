@@ -40,6 +40,7 @@ def is_null(val):
 
 def deref(pointer):
     '''dereference pointer to get value'''
+    # TODO: use loop to support nested pointers
     val = pointer
     if val.type.code == gdb.TYPE_CODE_PTR:
         if is_null(val):
