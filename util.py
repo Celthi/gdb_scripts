@@ -15,7 +15,7 @@ def StdMapToDict(iMap):
     it = StdMapPrinter('map', iMap).children()
     res = {}
     for key, value in it:
-        m = re.search('\[(\d{1,3})\]', key)
+        m = re.search(r'[(\d{1,3})]', key)
         if m:
             count = int(m.group(1))
             if count % 2 == 0:

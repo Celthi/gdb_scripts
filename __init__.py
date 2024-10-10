@@ -1,4 +1,4 @@
-import prelude
+from . import prelude
 
 from commands import dt
 from commands import stackfold
